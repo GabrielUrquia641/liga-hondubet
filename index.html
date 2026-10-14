@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liga Hondubet | Portal Oficial</title>
+
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Montserrat:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: #121827;
+      --primary-cyan: #00f2fe;
+      --primary-blue: #0052d4;
+      --neon-pink: #ff007f;
+      --neon-gold: #ffb703;
+      --neon-green: #00e676;
+      --neon-red: #ff1744;
+      --text-main: #ffffff;
+      --text-muted: #a0aec0;
+      --border-color: rgba(255, 255, 255, 0.12);
+      --gradient-neon: linear-gradient(135deg, #00f2fe, #4facfe);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .font-sports {
+      font-family: 'Teko', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    /* ANIMACIONES Y EFECTOS VISUALES */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .floating-card {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-scale:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.25);
+    }
+
+    /* Top Bar Vibrante */
+    .top-bar-neon {
+      background: linear-gradient(90deg, #0052d4, #ff007f, #ffb703);
+      height: 4px;
+      width: 100%;
+    }
+
+    /* Ticker Barra de Resultados */
+    .ticker-wrap {
+      background: #060911;
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 0;
+      font-size: 0.85rem;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 15px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .badge-live-pulse {
+      background: var(--neon-red);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      box-shadow: 0 0 12px rgba(255, 23, 68, 0.8);
+      animation: pulse-red 1.5s infinite;
+    }
+    @keyframes pulse-red {
+      0% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 23, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0); }
+    }
+
+    /* Navbar Pro Ajustada */
+    .navbar-pro {
+      background: rgba(11, 15, 25, 0.96);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border-color);
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    .navbar-brand {
+      font-weight: 900;
+      font-size: 1.4rem;
+    }
+    .brand-glow {
+      background: var(--gradient-neon);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.5));
+    }
+    .nav-link {
+      color: var(--text-main) !important;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      padding: 6px 12px !important;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: rgba(0, 242, 254, 0.15);
+      color: var(--primary-cyan) !important;
+    }
+
+    /* Hero Banner Deportivo */
+    .hero-vibrant {
+      position: relative;
+      background: linear-gradient(180deg, rgba(11, 15, 25, 0.3) 0%, var(--bg-dark) 100%),
+                  url('images/bg_3.jpg') center/cover no-repeat;
+      padding: 80px 0 100px 0;
+    }
+    .hero-card {
+      background: rgba(18, 24, 39, 0.88);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(0, 242, 254, 0.3);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 0 35px rgba(0, 242, 254, 0.2);
+    }
+
+    /* Botón Fluo */
+    .btn-glow {
+      background: var(--gradient-neon);
+      color: #000;
+      font-weight: 800;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+      transition: all 0.3s ease;
+    }
+    .btn-glow:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.8);
+      color: #000;
+    }
+
+    /* Tarjeta Próximo Partido */
+    .match-card-live {
+      background: linear-gradient(135deg, #101728, #1a243b);
+      border: 2px solid var(--primary-cyan);
+      border-radius: 24px;
+      padding: 30px;
+      margin-top: -60px;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 15px 40px rgba(0, 242, 254, 0.25);
+    }
+    .team-logo-hero {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-cyan);
+      box-shadow: 0 0 18px rgba(0, 242, 254, 0.4);
+      transition: transform 0.3s;
+    }
+
+    /* Cuenta Regresiva */
+    .countdown-box {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .countdown-item {
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid var(--primary-cyan);
+      border-radius: 10px;
+      padding: 8px 12px;
+      min-width: 60px;
+      text-align: center;
+    }
+    .countdown-number {
+      font-family: 'Teko', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--primary-cyan);
+    }
+    .countdown-label {
+      font-size: 0.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Ficha de Jugador FIFA Style */
+    .card-player {
+      background: linear-gradient(135deg, #1e2942, #111827);
+      border: 2px solid var(--neon-gold);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(255, 183, 3, 0.2);
+      transition: all 0.3s ease;
+    }
+    .card-player:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 183, 3, 0.5);
+    }
+    .player-rating {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-family: 'Teko', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--neon-gold);
+      line-height: 1;
+    }
+    .player-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid var(--neon-gold);
+      object-fit: cover;
+      margin: 10px auto;
+      box-shadow: 0 0 15px rgba(255, 183, 3, 0.4);
+    }
+
+    /* Cards de Noticias Neón */
+    .card-news {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .card-news:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-cyan);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.25);
+    }
+    .card-news img {
+      height: 190px;
+      object-fit: cover;
+    }
+    .tag-vibrant {
+      background: rgba(0, 242, 254, 0.15);
+      color: var(--primary-cyan);
+      border: 1px solid var(--primary-cyan);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    /* Tarjetas de Video Conferencia */
+    .card-video {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .card-video:hover {
+      border-color: var(--neon-pink);
+      box-shadow: 0 8px 25px rgba(255, 0, 127, 0.35);
+      transform: translateY(-3px);
+    }
+    .play-icon-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 0, 127, 0.9);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.8);
+      transition: transform 0.3s;
+    }
+    .card-video:hover .play-icon-overlay {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    /* Tabla de Posiciones */
+    .table-vibrant {
+      color: var(--text-main) !important;
+      margin: 0;
+      background-color: var(--bg-card) !important;
+    }
+    .table-vibrant th {
+      background-color: #0b101d !important;
+      color: var(--primary-cyan) !important;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border-color) !important;
+      padding: 14px 12px;
+    }
+    .table-vibrant td {
+      background-color: var(--bg-card) !important;
+      color: var(--text-main) !important;
+      padding: 12px;
+      border-bottom: 1px solid var(--border-color) !important;
+      vertical-align: middle;
+      font-weight: 700;
+    }
+    .table-vibrant tr:hover td {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+    .zone-champions td:first-child {
+      border-left: 4px solid var(--neon-green) !important;
+    }
+    .zone-relegation td:first-child {
+      border-left: 4px solid var(--neon-red) !important;
+    }
+
+    /* Partidos Items */
+    .match-card-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 22px;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .match-card-item:hover {
+      border-color: var(--primary-cyan);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.25);
+      transform: translateY(-5px);
+    }
+    .team-logo-sm {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 4px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+    }
+    .score-display {
+      font-family: 'Teko', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--neon-gold);
+      line-height: 1;
+      background: rgba(255, 183, 3, 0.1);
+      padding: 4px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 183, 3, 0.3);
+    }
+
+    /* Formulario de Contacto */
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .form-control {
+      background-color: #0b101d !important;
+      border: 1px solid var(--border-color) !important;
+      color: #fff !important;
+      padding: 12px 16px;
+      border-radius: 10px;
+    }
+    .form-control:focus {
+      border-color: var(--primary-cyan) !important;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+    }
+
+    /* Indicadores de Forma (V, E, D) */
+    .form-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      color: #fff;
+    }
+    .badge-v { background-color: var(--neon-green); color: #000; }
+    .badge-e { background-color: var(--neon-gold); color: #000; }
+    .badge-d { background-color: var(--neon-red); }
+
+    /* Progress bar custom para estadísticas */
+    .progress-stat {
+      height: 8px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    footer {
+      background: #050810;
+      border-top: 1px solid var(--border-color);
+      padding: 50px 0 25px 0;
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navMenu" data-bs-offset="100">
+
+  <div class="top-bar-neon"></div>
+
+  <!-- 1. Ticker de Resultados En Vivo -->
+  <div class="ticker-wrap d-none d-md-block">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-3">
+        <span class="badge-live-pulse"><i class="fa-solid fa-circle me-1"></i> EN VIVO</span>
+        <div class="ticker-item">
+          <span>UPNFM <strong class="text-warning">0 - 0</strong> Marathón</span>
+          <span class="text-muted ms-1">Jornada 9</span>
+        </div>
+        <div class="ticker-item">
+          <span>Motagua <strong class="text-info">2 - 1</strong> CD Choloma</span>
+          <span class="text-muted ms-1">Jornada 9</span>
+        </div>
+      </div>
+      <div>
+        <span class="badge bg-primary text-dark font-heading fw-bold px-3 py-1"><i class="fa-solid fa-trophy me-1"></i> APERTURA 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Navbar de Navegación Pro -->
+  <nav class="navbar navbar-expand-lg navbar-pro sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#inicio">
+        <i class="fa-solid fa-bolt text-warning me-2 fs-4"></i>
+        <span class="brand-glow">LIGA HONDUBET</span>
+      </a>
+      <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="fa-solid fa-bars fs-3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#jornada10">Próxima Jornada</a></li>
+          <li class="nav-item"><a class="nav-link" href="#matches">Jornada Anterior</a></li>
+          <li class="nav-item"><a class="nav-link" href="#players">Estrellas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Noticias & Conferencias</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+        </ul>
+        <a href="#tabla" class="btn btn-glow ms-lg-3 py-2 px-3 fs-6">Tabla En Vivo</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- SECCIÓN 1: INICIO & PRÓXIMO PARTIDO -->
+  <section id="inicio">
+    <div class="hero-vibrant">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <div class="hero-card floating-card">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <span class="badge bg-warning text-dark font-heading fw-bold px-3 py-2"><i class="fa-solid fa-fire me-1"></i> PARTIDAZO ESTELAR</span>
+                <span class="text-info fw-bold font-heading small"><i class="fa-solid fa-location-dot me-1"></i> TEGUCIGALPA</span>
+              </div>
+              <h1 class="display-4 text-white mb-2 font-heading">CD OLIMPIA VS REAL ESPAÑA</h1>
+              <p class="lead text-white-50 mb-4">El duelo definitivo por el liderato absoluto de la Liga Hondubet. No te pierdas cada detalle de este gran clásico.</p>
+              <div class="d-flex flex-wrap gap-3">
+                <a href="#jornada10" class="btn btn-glow"><i class="fa-solid fa-circle-info me-2"></i>Ver Partidos y Estadísticas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cuenta Regresiva -->
+    <div class="container">
+      <div class="match-card-live">
+        <div class="row align-items-center text-center g-3">
+          <div class="col-md-4">
+            <div class="d-flex flex-column align-items-center">
+              <img src="images/olimpia.jpg" alt="CD Olimpia" class="team-logo-hero" onerror="this.src='https://via.placeholder.com/90/00f2fe/000?text=CDO'">
+              <h3 class="text-white mt-3 mb-0 font-heading">CD OLIMPIA</h3>
+              <span class="badge bg-info text-dark mt-1">2º en la Tabla</span>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <span class="badge bg-primary text-dark font-heading fw-bold mb-2 px-3 py-1"><i class="fa-solid fa-stopwatch me-1"></i> CUENTA REGRESIVA J10</span>
+            <div class="countdown-box my-2">
+              <div class="countdown-item"><div id="days" class="countdown-number">01</div><div class="countdown-label">Días</div></div>
+              <div class="countdown-item"><div id="hours" class="countdown-number">11</div><div class="countdown-label">Horas</div></div>
+              <div class="countdown-item"><div id="minutes" class="countdown-number">48</div><div class="countdown-label">Min</div></div>
+              <div class="countdown-item"><div id="seconds" class="countdown-number">20</div><div class="countdown-label">Seg</div></div>
+            </div>
+            <div class="text-center small font-heading mt-2">
+              <span class="text-warning d-block fw-bold"><i class="fa-regular fa-clock me-1"></i> Jueves 15 de Octubre, 7:30 PM</span>
+              <span class="text-white small">Estadio Nacional Chelato Uclés</span>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="d-flex flex-column align-items-center">
+              <img src="images/real_españa.png" alt="Real España" class="team-logo-hero" onerror="this.src='https://via.placeholder.com/90/ffb703/000?text=RCD'">
+              <h3 class="text-white mt-3 mb-0 font-heading">REAL ESPAÑA</h3>
+              <span class="badge bg-warning text-dark mt-1">1º en la Tabla</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECCIÓN 2: PRÓXIMA JORNADA 10 (OFICIAL Y CORREGIDA) -->
+  <section id="jornada10" class="py-5 mt-4">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+          <span class="text-warning font-heading fw-bold"><i class="fa-solid fa-calendar-days me-1"></i> CARTELERA OFICIAL</span>
+          <h2 class="m-0 text-white font-heading">PRÓXIMA JORNADA 10 (6 PARTIDOS)</h2>
+        </div>
+        <span class="badge bg-primary text-dark font-heading px-3 py-2">HAZ CLIC EN DETALLES</span>
+      </div>
+
+      <div class="row g-4">
+        <!-- Partido 1: Marathón vs Olancho FC -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Jueves 15 Oct, 5:15 PM</span>
+              <small class="text-white font-heading"><i class="fa-solid fa-location-dot me-1 text-info"></i> Yankel Rosenthal, SPS</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/marathon.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00e676/000?text=CDM'"><h6 class="text-white font-heading mb-0">CD Marathón</h6></div>
+              <div class="font-sports fs-2 text-warning fw-bold">VS</div>
+              <div class="w-35"><img src="images/olancho.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00f2fe/000?text=OFC'"><h6 class="text-white font-heading mb-0">Olancho FC</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-info btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#matchModal"
+                data-match="CD Marathón vs Olancho FC"
+                data-stadium="Estadio Yankel Rosenthal, San Pedro Sula"
+                data-date="Jueves 15 de Octubre, 5:15 PM"
+                data-hform="badge-v,badge-d,badge-v,badge-v,badge-e"
+                data-hformtext="V, D, V, V, E"
+                data-aform="badge-e,badge-v,badge-d,badge-v,badge-e"
+                data-aformtext="E, V, D, V, E"
+                data-h2h="Olancho 1-1 Marathón | Marathón 2-1 Olancho | Olancho 0-0 Marathón | Marathón 1-0 Olancho | Olancho 2-0 Marathón">
+                <i class="fa-solid fa-chart-bar me-1"></i> Ver Detalles y Previa
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 2: Olimpia vs Real España -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-warning text-dark small"><i class="fa-regular fa-calendar me-1"></i> Jueves 15 Oct, 7:30 PM</span>
+              <small class="text-white font-heading"><i class="fa-solid fa-location-dot me-1 text-info"></i> Chelato Uclés, Tegucigalpa</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/olimpia.jpg" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00f2fe/000?text=OLI'"><h6 class="text-white font-heading mb-0">CD Olimpia</h6></div>
+              <div class="font-sports fs-2 text-warning fw-bold">VS</div>
+              <div class="w-35"><img src="images/real_españa.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ffb703/000?text=RES'"><h6 class="text-white font-heading mb-0">Real España</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-info btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#matchModal"
+                data-match="CD Olimpia vs Real España"
+                data-stadium="Estadio Nacional Chelato Uclés, Tegucigalpa"
+                data-date="Jueves 15 de Octubre, 7:30 PM"
+                data-hform="badge-v,badge-v,badge-e,badge-v,badge-d"
+                data-hformtext="V, V, E, V, D"
+                data-aform="badge-v,badge-v,badge-v,badge-e,badge-v"
+                data-aformtext="V, V, V, E, V"
+                data-h2h="Olimpia 2-1 Real España | Real España 1-0 Olimpia | Olimpia 0-0 Real España | Real España 3-1 Olimpia | Olimpia 2-2 Real España">
+                <i class="fa-solid fa-chart-bar me-1"></i> Ver Detalles y Previa
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 3: Platense FC vs FC Motagua -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Sábado 17 Oct, 3:00 PM</span>
+              <small class="text-white font-heading"><i class="fa-solid fa-location-dot me-1 text-info"></i> Estadio Excélsior, Puerto Cortés</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/platense.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00f2fe/000?text=PLA'"><h6 class="text-white font-heading mb-0">Platense FC</h6></div>
+              <div class="font-sports fs-2 text-warning fw-bold">VS</div>
+              <div class="w-35"><img src="images/motagua.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00f2fe/000?text=MOT'"><h6 class="text-white font-heading mb-0">FC Motagua</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-info btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#matchModal"
+                data-match="Platense FC vs FC Motagua"
+                data-stadium="Estadio Excélsior, Puerto Cortés"
+                data-date="Sábado 17 de Octubre, 3:00 PM"
+                data-hform="badge-v,badge-d,badge-v,badge-e,badge-d"
+                data-hformtext="V, D, V, E, D"
+                data-aform="badge-v,badge-v,badge-e,badge-d,badge-v"
+                data-aformtext="V, V, E, D, V"
+                data-h2h="Motagua 3-0 Platense | Platense 1-2 Motagua | Motagua 2-0 Platense | Platense 0-0 Motagua | Motagua 1-1 Platense">
+                <i class="fa-solid fa-chart-bar me-1"></i> Ver Detalles y Previa
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 4: Juticalpa FC vs CD Choloma -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Sábado 17 Oct, 5:15 PM</span>
+              <small class="text-white font-heading"><i class="fa-solid fa-location-dot me-1 text-info"></i> Juan Ramón Brevé, Juticalpa</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/juticalpa.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ffb703/000?text=JUT'"><h6 class="text-white font-heading mb-0">Juticalpa FC</h6></div>
+              <div class="font-sports fs-2 text-warning fw-bold">VS</div>
+              <div class="w-35"><img src="images/choloma.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ff007f/fff?text=CHO'"><h6 class="text-white font-heading mb-0">CD Choloma</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-info btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#matchModal"
+                data-match="Juticalpa FC vs CD Choloma"
+                data-stadium="Estadio Juan Ramón Brevé, Juticalpa"
+                data-date="Sábado 17 de Octubre, 5:15 PM"
+                data-hform="badge-d,badge-e,badge-d,badge-d,badge-v"
+                data-hformtext="D, E, D, D, V"
+                data-aform="badge-d,badge-d,badge-e,badge-v,badge-d"
+                data-aformtext="D, D, E, V, D"
+                data-h2h="Choloma 1-0 Juticalpa | Juticalpa 2-1 Choloma | Choloma 0-0 Juticalpa | Juticalpa 1-1 Choloma | Choloma 3-2 Juticalpa">
+                <i class="fa-solid fa-chart-bar me-1"></i> Ver Detalles y Previa
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 5: Lobos UPNFM vs CA Independiente -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Sábado 17 Oct, 7:30 PM</span>
+              <small class="text-white font-heading"><i class="fa-solid fa-location-dot me-1 text-info"></i> Emilio Williams, Choluteca</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/lobos.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ffb703/000?text=UPN'"><h6 class="text-white font-heading mb-0">Lobos UPNFM</h6></div>
+              <div class="font-sports fs-2 text-warning fw-bold">VS</div>
+              <div class="w-35"><img src="images/independiente.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00e676/000?text=CAI'"><h6 class="text-white font-heading mb-0">CA Independiente</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-info btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#matchModal"
+                data-match="Lobos UPNFM vs CA Independiente"
+                data-stadium="Estadio Emilio Williams, Choluteca"
+                data-date="Sábado 17 de Octubre, 7:30 PM"
+                data-hform="badge-e,badge-e,badge-d,badge-v,badge-e"
+                data-hformtext="E, E, D, V, E"
+                data-aform="badge-e,badge-v,badge-d,badge-e,badge-v"
+                data-aformtext="E, V, D, E, V"
+                data-h2h="Independiente 1-1 Lobos | Lobos 2-0 Independiente | Independiente 0-0 Lobos | Lobos 1-2 Independiente | Independiente 2-1 Lobos">
+                <i class="fa-solid fa-chart-bar me-1"></i> Ver Detalles y Previa
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 6: Génesis FC vs Estrella Roja -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Domingo 18 Oct, 3:30 PM</span>
+              <small class="text-white font-heading"><i class="fa-solid fa-location-dot me-1 text-info"></i> Carlos Miranda, Comayagua</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/genesis.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00e676/000?text=GEN'"><h6 class="text-white font-heading mb-0">Génesis FC</h6></div>
+              <div class="font-sports fs-2 text-warning fw-bold">VS</div>
+              <div class="w-35"><img src="images/estrella_roja.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ff007f/fff?text=CER'"><h6 class="text-white font-heading mb-0">Estrella Roja</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-info btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#matchModal"
+                data-match="Génesis FC vs Estrella Roja"
+                data-stadium="Estadio Carlos Miranda, Comayagua"
+                data-date="Domingo 18 de Octubre, 3:30 PM"
+                data-hform="badge-d,badge-v,badge-e,badge-v,badge-v"
+                data-hformtext="D, V, E, V, V"
+                data-aform="badge-d,badge-d,badge-v,badge-e,badge-d"
+                data-aformtext="D, D, V, E, D"
+                data-h2h="Estrella Roja 0-2 Génesis | Génesis 3-1 Estrella Roja | Estrella Roja 1-1 Génesis | Génesis 1-0 Estrella Roja | Estrella Roja 2-2 Génesis">
+                <i class="fa-solid fa-chart-bar me-1"></i> Ver Detalles y Previa
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECCIÓN 3: JORNADA ANTERIOR - JORNADA 9 (CON ESTADÍSTICAS DEL PARTIDO) -->
+  <section id="matches" class="py-5 bg-dark border-top border-bottom border-secondary">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+          <span class="text-warning font-heading fw-bold"><i class="fa-solid fa-rotate-left me-1"></i> RESULTADOS RECIENTES</span>
+          <h2 class="m-0 text-white font-heading">JORNADA ANTERIOR (JORNADA 9 COMPLETA)</h2>
+        </div>
+        <span class="badge bg-secondary font-heading px-3 py-2 text-white"><i class="fa-solid fa-check-double me-1"></i> FINALIZADA</span>
+      </div>
+
+      <div class="row g-4">
+        <!-- Partido 1: Platense vs Juticalpa -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Viernes 9 de Octubre</span>
+              <small class="text-white"><i class="fa-solid fa-location-dot me-1 text-warning"></i> Estadio Excélsior, Puerto Cortés</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/platense.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00f2fe/000?text=PLA'"><h6 class="text-white font-heading mb-0">Platense FC</h6></div>
+              <div class="score-display">2 - 1</div>
+              <div class="w-35"><img src="images/juticalpa.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ffb703/000?text=JUT'"><h6 class="text-white font-heading mb-0">Juticalpa FC</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-warning btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#pastMatchModal"
+                data-match="Platense FC (2) vs (1) Juticalpa FC"
+                data-stadium="Estadio Excélsior, Puerto Cortés"
+                data-goals="Platense: G. Gómez 34', A. Volpi 78' | Juticalpa: R. Benítez 51'"
+                data-possession="58%,42%"
+                data-shots="14,9"
+                data-shotsontarget="6,3"
+                data-fouls="11,15"
+                data-yellows="2,4"
+                data-corners="7,4">
+                <i class="fa-solid fa-chart-line me-1"></i> Ver Estadísticas del Partido
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 2: Génesis FC vs CD Olimpia -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Sábado 10 de Octubre</span>
+              <small class="text-white"><i class="fa-solid fa-location-dot me-1 text-warning"></i> Carlos Miranda, Comayagua</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/genesis.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00e676/000?text=GEN'"><h6 class="text-white font-heading mb-0">Génesis FC</h6></div>
+              <div class="score-display">0 - 1</div>
+              <div class="w-35"><img src="images/olimpia.jpg" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00f2fe/000?text=OLI'"><h6 class="text-white font-heading mb-0">CD Olimpia</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-warning btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#pastMatchModal"
+                data-match="Génesis FC (0) vs (1) CD Olimpia"
+                data-stadium="Estadio Carlos Miranda, Comayagua"
+                data-goals="Génesis: Sin goles | Olimpia: Yustin Arboleda 62'"
+                data-possession="41%,59%"
+                data-shots="7,16"
+                data-shotsontarget="2,7"
+                data-fouls="18,12"
+                data-yellows="3,2"
+                data-corners="3,8">
+                <i class="fa-solid fa-chart-line me-1"></i> Ver Estadísticas del Partido
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 3: FC Motagua vs CD Choloma -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Sábado 10 de Octubre</span>
+              <small class="text-white"><i class="fa-solid fa-location-dot me-1 text-warning"></i> Estadio Chelato Uclés, Tegucigalpa</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/motagua.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00f2fe/000?text=MOT'"><h6 class="text-white font-heading mb-0">FC Motagua</h6></div>
+              <div class="score-display">2 - 1</div>
+              <div class="w-35"><img src="images/choloma.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ff007f/fff?text=CHO'"><h6 class="text-white font-heading mb-0">CD Choloma</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-warning btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#pastMatchModal"
+                data-match="FC Motagua (2) vs (1) CD Choloma"
+                data-stadium="Estadio Chelato Uclés, Tegucigalpa"
+                data-goals="Motagua: R. De Olivera 18', 44' | Choloma: J. Castillo 82'"
+                data-possession="63%,37%"
+                data-shots="18,6"
+                data-shotsontarget="9,2"
+                data-fouls="9,14"
+                data-yellows="1,3"
+                data-corners="9,2">
+                <i class="fa-solid fa-chart-line me-1"></i> Ver Estadísticas del Partido
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 4: Lobos UPNFM vs CD Marathón -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Sábado 10 de Octubre</span>
+              <small class="text-white"><i class="fa-solid fa-location-dot me-1 text-warning"></i> Estadio Emilio Williams, Choluteca</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/lobos.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ffb703/000?text=UPN'"><h6 class="text-white font-heading mb-0">Lobos UPNFM</h6></div>
+              <div class="score-display">0 - 0</div>
+              <div class="w-35"><img src="images/marathon.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00e676/000?text=MAR'"><h6 class="text-white font-heading mb-0">CD Marathón</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-warning btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#pastMatchModal"
+                data-match="Lobos UPNFM (0) vs (0) CD Marathón"
+                data-stadium="Estadio Emilio Williams, Choluteca"
+                data-goals="Empate sin goles en Choluteca"
+                data-possession="48%,52%"
+                data-shots="10,11"
+                data-shotsontarget="3,4"
+                data-fouls="16,13"
+                data-yellows="3,2"
+                data-corners="5,6">
+                <i class="fa-solid fa-chart-line me-1"></i> Ver Estadísticas del Partido
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 5: Estrella Roja vs Real España -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Domingo 11 de Octubre</span>
+              <small class="text-white"><i class="fa-solid fa-location-dot me-1 text-warning"></i> Estadio Marcelo Tinoco, Danlí</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/estrella_roja.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ff007f/fff?text=CER'"><h6 class="text-white font-heading mb-0">Estrella Roja</h6></div>
+              <div class="score-display">0 - 1</div>
+              <div class="w-35"><img src="images/real_españa.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/ffb703/000?text=RES'"><h6 class="text-white font-heading mb-0">Real España</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-warning btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#pastMatchModal"
+                data-match="Estrella Roja (0) vs (1) Real España"
+                data-stadium="Estadio Marcelo Tinoco, Danlí"
+                data-goals="Estrella Roja: Sin goles | Real España: E. Hernández 55'"
+                data-possession="38%,62%"
+                data-shots="5,15"
+                data-shotsontarget="1,6"
+                data-fouls="17,10"
+                data-yellows="4,1"
+                data-corners="2,7">
+                <i class="fa-solid fa-chart-line me-1"></i> Ver Estadísticas del Partido
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partido 6: Olancho FC vs CA Independiente -->
+        <div class="col-lg-6">
+          <div class="match-card-item hover-scale">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-secondary">
+              <span class="badge bg-dark text-info border border-info small"><i class="fa-regular fa-calendar me-1"></i> Domingo 11 de Octubre</span>
+              <small class="text-white"><i class="fa-solid fa-location-dot me-1 text-warning"></i> Estadio Juan Ramón Brevé, Juticalpa</small>
+            </div>
+            <div class="d-flex align-items-center justify-content-between text-center my-2">
+              <div class="w-35"><img src="images/olancho.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00f2fe/000?text=OFC'"><h6 class="text-white font-heading mb-0">Olancho FC</h6></div>
+              <div class="score-display">1 - 1</div>
+              <div class="w-35"><img src="images/independiente.png" class="team-logo-sm mb-2" onerror="this.src='https://via.placeholder.com/50/00e676/000?text=CAI'"><h6 class="text-white font-heading mb-0">CA Independiente</h6></div>
+            </div>
+            <div class="mt-3 pt-2 text-center">
+              <button class="btn btn-outline-warning btn-sm w-100 font-heading fw-bold py-2" data-bs-toggle="modal" data-bs-target="#pastMatchModal"
+                data-match="Olancho FC (1) vs (1) CA Independiente"
+                data-stadium="Estadio Juan Ramón Brevé, Juticalpa"
+                data-goals="Olancho: C. Altamirano 22' (P) | Independiente: J. Villa 69'"
+                data-possession="53%,47%"
+                data-shots="12,10"
+                data-shotsontarget="5,4"
+                data-fouls="12,15"
+                data-yellows="2,3"
+                data-corners="6,4">
+                <i class="fa-solid fa-chart-line me-1"></i> Ver Estadísticas del Partido
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECCIÓN 4: EQUIPOS & ESTRELLAS (GOLEADORES) -->
+  <section id="players" class="py-5">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div>
+          <span class="text-warning font-heading fw-bold"><i class="fa-solid fa-star me-1"></i> FIGURAS ESTELARES</span>
+          <h2 class="m-0 text-white font-heading">GOLEADORES DE LA TEMPORADA</h2>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="card-player text-center">
+            <div class="player-rating">88</div>
+            <img src="images/messiniti.jpg" class="player-img" onerror="this.src='https://via.placeholder.com/110/ffb703/000?text=MESSINITI'">
+            <h5 class="text-white font-heading mb-0 mt-2">N. MESSINITI</h5>
+            <small class="text-info font-heading d-block">CD Marathón</small>
+            <div class="mt-3 pt-2 border-top border-secondary d-flex justify-content-around">
+              <div><span class="text-muted d-block small">GOLES</span><strong class="text-warning fs-5 font-sports">5</strong></div>
+              <div><span class="text-muted d-block small">ASIST</span><strong class="text-info fs-5 font-sports">2</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="card-player text-center" style="border-color: var(--primary-cyan);">
+            <div class="player-rating" style="color: var(--primary-cyan);">87</div>
+            <img src="images/e_hernandez.jpg" class="player-img" style="border-color: var(--primary-cyan);" onerror="this.src='https://via.placeholder.com/110/00f2fe/000?text=HERNANDEZ'">
+            <h5 class="text-white font-heading mb-0 mt-2">E. HERNÁNDEZ</h5>
+            <small class="text-info font-heading d-block">Real España</small>
+            <div class="mt-3 pt-2 border-top border-secondary d-flex justify-content-around">
+              <div><span class="text-muted d-block small">GOLES</span><strong class="text-warning fs-5 font-sports">4</strong></div>
+              <div><span class="text-muted d-block small">ASIST</span><strong class="text-info fs-5 font-sports">3</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="card-player text-center" style="border-color: var(--neon-pink);">
+            <div class="player-rating" style="color: var(--neon-pink);">86</div>
+            <img src="images/arboleda.jpg" class="player-img" style="border-color: var(--neon-pink);" onerror="this.src='https://via.placeholder.com/110/ff007f/fff?text=ARBOLEDA'">
+            <h5 class="text-white font-heading mb-0 mt-2">Y. ARBOLEDA</h5>
+            <small class="text-info font-heading d-block">CD Olimpia</small>
+            <div class="mt-3 pt-2 border-top border-secondary d-flex justify-content-around">
+              <div><span class="text-muted d-block small">GOLES</span><strong class="text-warning fs-5 font-sports">4</strong></div>
+              <div><span class="text-muted d-block small">ASIST</span><strong class="text-info fs-5 font-sports">1</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="card-player text-center" style="border-color: var(--neon-green);">
+            <div class="player-rating" style="color: var(--neon-green);">84</div>
+            <img src="images/de_olivera.jpg" class="player-img" style="border-color: var(--neon-green);" onerror="this.src='https://via.placeholder.com/110/00e676/000?text=GOMEZ'">
+            <h5 class="text-white font-heading mb-0 mt-2">R. De Olivera</h5>
+            <small class="text-info font-heading d-block">CD Motagua</small>
+            <div class="mt-3 pt-2 border-top border-secondary d-flex justify-content-around">
+              <div><span class="text-muted d-block small">GOLES</span><strong class="text-warning fs-5 font-sports">4</strong></div>
+              <div><span class="text-muted d-block small">ASIST</span><strong class="text-info fs-5 font-sports">2</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECCIÓN 5: NOTICIAS & CONFERENCIAS (CON RUTAS LOCALES DE VIDEO) + TABLA DE POSICIONES -->
+  <section id="blog" class="py-5 bg-dark border-top border-bottom border-secondary">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Noticias & Conferencias Izquierda -->
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <h3 class="m-0 text-white font-heading"><i class="fa-solid fa-newspaper text-warning me-2"></i>NOTICIAS & CONFERENCIAS</h3>
+          </div>
+
+          <div class="row g-4">
+            <!-- Noticia Flash 1 -->
+            <div class="col-12">
+              <div class="card-news">
+                <img src="images/imagen1.jpg" class="w-100" onerror="this.src='https://via.placeholder.com/400x190/121827/00f2fe?text=CLASICO'">
+                <div class="p-4">
+                  <span class="tag-vibrant"><i class="fa-solid fa-fire me-1"></i> CLÁSICO NACIONAL</span>
+                  <h5 class="card-title text-white mt-2 font-heading">Chelato Uclés con boletería agotada para el duelo Olimpia vs Real España</h5>
+                  <p class="card-text text-white-50 small mb-3">La afición alba respondió masivamente para presenciar el partido que definirá al puntero del torneo.</p>
+                  <button class="btn btn-outline-info btn-sm font-heading fw-bold" data-bs-toggle="modal" data-bs-target="#newsModal"
+                    data-title="Chelato Uclés con boletería agotada para el duelo Olimpia vs Real España"
+                    data-tag="CLÁSICO NACIONAL"
+                    data-img="images/imagen1.jpg"
+                    data-body="Las taquillas del Estadio Nacional Chelato Uclés han colapsado en pocas horas tras confirmarse que se vendió el 100% de la boletería habilitada para el clásico entre CD Olimpia y Real España. Ambos equipos llegan en un nivel espectacular disputando la cima del Torneo Apertura 2026. Se implementará un fuerte operativo de seguridad en los alrededores del inmueble deportivo desde las 4:00 PM.">
+                    <i class="fa-solid fa-newspaper me-1"></i> Leer noticia completa
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Noticia Flash 2 -->
+            <div class="col-12">
+              <div class="card-news">
+                <img src="images/imagen2.jpg" class="w-100" onerror="this.src='https://via.placeholder.com/400x190/121827/ffb703?text=LIGUILLA'">
+                <div class="p-4">
+                  <span class="tag-vibrant" style="color: var(--neon-pink); border-color: var(--neon-pink);"><i class="fa-solid fa-trophy me-1"></i> LUCHA POR LIGUILLA</span>
+                  <h5 class="card-title text-white mt-2 font-heading">Motagua busca consolidarse en los primeros 4 puestos</h5>
+                  <p class="card-text text-white-50 small mb-3">Tras el triunfo ante CD Choloma, el ciclón azul afina puntería para medirse a Platense FC en Puerto Cortés.</p>
+                  <button class="btn btn-outline-info btn-sm font-heading fw-bold" data-bs-toggle="modal" data-bs-target="#newsModal"
+                    data-title="Motagua busca consolidarse en los primeros 4 puestos"
+                    data-tag="LUCHA POR LIGUILLA"
+                    data-img="images/imagen2.jpg"
+                    data-body="El FC Motagua ha vuelto a los entrenamientos este lunes enfocado plenamente en su choque de la Jornada 10 frente a Platense FC en el Estadio Excélsior. El estratega azul destacó la recuperación goleadora del atacante R. De Olivera, autor de un doblete en la última fecha, asegurando que el equipo viajará con la convicción firme de sumar tres puntos vitales.">
+                    <i class="fa-solid fa-newspaper me-1"></i> Leer noticia completa
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subsección Video Conferencias de Prensa (CONFIGURADO CON VIDEOS LOCALES DE LA CARPETA IMAGES) -->
+            <div class="col-12 mt-4">
+              <h5 class="text-warning font-heading mb-3"><i class="fa-solid fa-video me-2"></i>CONFERENCIAS DE PRENSA RECIENTES</h5>
+              <div class="row g-3">
+                
+                <!-- Conferencia 1: CD Olimpia -->
+                <div class="col-md-6">
+                  <div class="card-video p-2 d-flex align-items-center gap-3" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="images/conferencia_1.mp4">
+                    <div class="position-relative" style="width: 100px; height: 65px; flex-shrink: 0;">
+                      <img src="images/img1.jpg" class="w-100 h-100 rounded" style="object-fit: cover;" onerror="this.src='https://via.placeholder.com/100x65/121827/00f2fe?text=OLI'">
+                      <div class="play-icon-overlay" style="width: 32px; height: 32px; font-size: 0.8rem;"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div>
+                      <span class="badge bg-primary text-dark font-heading" style="font-size:0.65rem;">CD OLIMPIA</span>
+                      <h6 class="text-white font-heading small mb-0 mt-1">Conferencia Pre-Clásico</h6>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Conferencia 2: Real España -->
+                <div class="col-md-6">
+                  <div class="card-video p-2 d-flex align-items-center gap-3" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="images/conferencia_2.mp4">
+                    <div class="position-relative" style="width: 100px; height: 65px; flex-shrink: 0;">
+                      <img src="images/img2.jpg" class="w-100 h-100 rounded" style="object-fit: cover;" onerror="this.src='https://via.placeholder.com/100x65/121827/ffb703?text=RES'">
+                      <div class="play-icon-overlay" style="width: 32px; height: 32px; font-size: 0.8rem;"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div>
+                      <span class="badge bg-warning text-dark font-heading" style="font-size:0.65rem;">REAL ESPAÑA</span>
+                      <h6 class="text-white font-heading small mb-0 mt-1">Declaraciones del DT</h6>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tabla General Derecha -->
+        <div class="col-lg-6" id="tabla">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <h3 class="m-0 text-white font-heading"><i class="fa-solid fa-trophy text-info me-2"></i>POSICIONES (12 EQUIPOS)</h3>
+            <span class="badge bg-success text-dark font-heading">EN VIVO</span>
+          </div>
+
+          <div class="card-news">
+            <div class="table-responsive">
+              <table class="table table-vibrant">
+                <thead>
+                  <tr>
+                    <th>POS</th>
+                    <th>CLUB</th>
+                    <th class="text-center">PJ</th>
+                    <th class="text-center">DG</th>
+                    <th class="text-end">PTS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="zone-champions"><td><strong class="text-warning fs-5">1</strong></td><td><strong class="text-white">Real España (RES)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-success font-sports fs-5">+10</td><td class="text-end text-info font-sports fs-4">21</td></tr>
+                  <tr class="zone-champions"><td><strong class="text-white fs-5">2</strong></td><td><strong class="text-white">CD Olimpia (OLI)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-success font-sports fs-5">+13</td><td class="text-end text-info font-sports fs-4">20</td></tr>
+                  <tr class="zone-champions"><td><strong class="text-muted fs-5">3</strong></td><td><strong class="text-white">CD Marathón (CDM)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-success font-sports fs-5">+8</td><td class="text-end text-info font-sports fs-4">18</td></tr>
+                  <tr class="zone-champions"><td><strong class="text-muted fs-5">4</strong></td><td><strong class="text-white">FC Motagua (MOT)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-success font-sports fs-5">+4</td><td class="text-end text-info font-sports fs-4">16</td></tr>
+                  <tr class="zone-champions"><td><strong class="text-muted fs-5">5</strong></td><td><strong class="text-white">Olancho FC (OFC)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-success font-sports fs-5">+1</td><td class="text-end text-info font-sports fs-4">12</td></tr>
+                  <tr class="zone-champions"><td><strong class="text-muted fs-5">6</strong></td><td><strong class="text-white">Génesis FC (GEN)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-success font-sports fs-5">+3</td><td class="text-end text-info font-sports fs-4">11</td></tr>
+                  <tr><td><strong class="text-muted fs-5">7</strong></td><td><strong class="text-white">CA Independiente (CAI)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-muted font-sports fs-5">0</td><td class="text-end text-info font-sports fs-4">10</td></tr>
+                  <tr><td><strong class="text-muted fs-5">8</strong></td><td><strong class="text-white">Lobos UPNFM (UPN)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-danger font-sports fs-5">-3</td><td class="text-end text-info font-sports fs-4">9</td></tr>
+                  <tr><td><strong class="text-muted fs-5">9</strong></td><td><strong class="text-white">Estrella Roja (CER)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-danger font-sports fs-5">-5</td><td class="text-end text-info font-sports fs-4">8</td></tr>
+                  <tr><td><strong class="text-muted fs-5">10</strong></td><td><strong class="text-white">Platense FC (PLA)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-danger font-sports fs-5">-6</td><td class="text-end text-info font-sports fs-4">8</td></tr>
+                  <tr class="zone-relegation"><td><strong class="text-danger fs-5">11</strong></td><td><strong class="text-white">CD Choloma (CHO)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-danger font-sports fs-5">-8</td><td class="text-end text-info font-sports fs-4">7</td></tr>
+                  <tr class="zone-relegation"><td><strong class="text-danger fs-5">12</strong></td><td><strong class="text-white">Juticalpa FC (JUT)</strong></td><td class="text-center text-muted">9</td><td class="text-center text-danger font-sports fs-5">-12</td><td class="text-end text-info font-sports fs-4">6</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="p-3 bg-dark d-flex justify-content-around small">
+              <span class="text-success"><i class="fa-solid fa-square me-1"></i> Liguilla</span>
+              <span class="text-danger"><i class="fa-solid fa-square me-1"></i> Zona de Riesgo</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECCIÓN 6: CONTACTO -->
+  <section id="contact" class="py-5">
+    <div class="container py-3" style="max-width: 800px;">
+      <div class="text-center mb-5">
+        <span class="text-warning font-heading fw-bold"><i class="fa-solid fa-headset me-1"></i> SOPORTE Y PRENSA</span>
+        <h2 class="text-white font-heading mt-1">CONTACTA CON LA LIGA</h2>
+        <p class="text-white-50">¿Tienes dudas sobre boletería o acreditaciones? Escríbenos.</p>
+      </div>
+
+      <div class="contact-card">
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label text-white-50 small fw-bold">NOMBRE COMPLETO</label>
+              <input type="text" class="form-control" placeholder="Tu nombre">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-white-50 small fw-bold">CORREO ELECTRÓNICO</label>
+              <input type="email" class="form-control" placeholder="correo@ejemplo.com">
+            </div>
+            <div class="col-12">
+              <label class="form-label text-white-50 small fw-bold">ASUNTO</label>
+              <input type="text" class="form-control" placeholder="Motivo de consulta">
+            </div>
+            <div class="col-12">
+              <label class="form-label text-white-50 small fw-bold">MENSAJE</label>
+              <textarea class="form-control" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+            </div>
+            <div class="col-12 text-center mt-4">
+              <button type="submit" class="btn btn-glow px-5 py-3 w-100">Enviar Mensaje</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MODAL DE LECTURA COMPLETA DE NOTICIAS -->
+  <div class="modal fade" id="newsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border-secondary text-white">
+        <div class="modal-header border-secondary">
+          <span id="modalNewsTag" class="tag-vibrant me-2">NOTICIA</span>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <h4 id="modalNewsTitle" class="font-heading text-white mb-3">Título de la noticia</h4>
+          <img id="modalNewsImg" src="" class="w-100 rounded mb-3" style="max-height: 320px; object-fit: cover;">
+          <p id="modalNewsBody" class="text-white-50 leading-relaxed">Cuerpo de la noticia...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL DE PREVIA Y H2H (PRÓXIMA JORNADA) -->
+  <div class="modal fade" id="matchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border-secondary text-white">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title font-heading text-warning" id="modalMatchTitle">Previa del Partido</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="text-center mb-4">
+            <p id="modalStadium" class="text-info mb-1 fw-bold"><i class="fa-solid fa-location-dot me-1"></i> Estadio</p>
+            <p id="modalDate" class="text-muted small"><i class="fa-regular fa-clock me-1"></i> Fecha y Hora</p>
+          </div>
+
+          <h6 class="font-heading text-warning mb-2 border-bottom border-secondary pb-1">Últimos 5 Encuentros (Forma Reciente)</h6>
+          <div class="row mb-4">
+            <div class="col-6 text-center">
+              <strong id="modalHomeTeamName" class="d-block mb-2 text-white">Equipo Local</strong>
+              <div id="modalHomeForm" class="d-flex justify-content-center gap-1"></div>
+            </div>
+            <div class="col-6 text-center">
+              <strong id="modalAwayTeamName" class="d-block mb-2 text-white">Equipo Visitante</strong>
+              <div id="modalAwayForm" class="d-flex justify-content-center gap-1"></div>
+            </div>
+          </div>
+
+          <h6 class="font-heading text-warning mb-2 border-bottom border-secondary pb-1">Enfrentamientos Directos (H2H)</h6>
+          <ul id="modalH2HList" class="list-group list-group-flush bg-transparent small"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL: ESTADÍSTICAS COMPLETAS DEL PARTIDO JUGADO (JORNADA ANTERIOR) -->
+  <div class="modal fade" id="pastMatchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border-secondary text-white">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title font-heading text-warning" id="pastModalTitle">Estadísticas Finales del Partido</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="text-center mb-3">
+            <p id="pastModalStadium" class="text-info mb-1 fw-bold"><i class="fa-solid fa-location-dot me-1"></i> Estadio</p>
+            <div id="pastModalGoals" class="badge bg-secondary p-2 text-wrap font-heading">Goles</div>
+          </div>
+
+          <h6 class="font-heading text-warning mb-3 border-bottom border-secondary pb-1 text-center"><i class="fa-solid fa-chart-column me-2"></i>MÉTRICAS DEL PARTIDO</h6>
+
+          <!-- Posesión -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between small fw-bold mb-1">
+              <span id="pastHomePoss">50%</span>
+              <span class="text-muted">POSESIÓN DE BALÓN</span>
+              <span id="pastAwayPoss">50%</span>
+            </div>
+            <div class="progress progress-stat">
+              <div id="pastHomePossBar" class="progress-bar bg-info" role="progressbar" style="width: 50%"></div>
+              <div id="pastAwayPossBar" class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
+            </div>
+          </div>
+
+          <!-- Tiros Totales -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between small fw-bold mb-1">
+              <span id="pastHomeShots">0</span>
+              <span class="text-muted">TIROS TOTALES</span>
+              <span id="pastAwayShots">0</span>
+            </div>
+            <div class="progress progress-stat">
+              <div id="pastHomeShotsBar" class="progress-bar bg-info" role="progressbar" style="width: 50%"></div>
+              <div id="pastAwayShotsBar" class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
+            </div>
+          </div>
+
+          <!-- Tiros al Arco -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between small fw-bold mb-1">
+              <span id="pastHomeTarget">0</span>
+              <span class="text-muted">TIROS AL ARCO</span>
+              <span id="pastAwayTarget">0</span>
+            </div>
+            <div class="progress progress-stat">
+              <div id="pastHomeTargetBar" class="progress-bar bg-info" role="progressbar" style="width: 50%"></div>
+              <div id="pastAwayTargetBar" class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
+            </div>
+          </div>
+
+          <!-- Tarjetas Amarillas y Rojas -->
+          <div class="row text-center mt-4 pt-2 border-top border-secondary">
+            <div class="col-4">
+              <small class="text-muted d-block fw-bold">FALTAS</small>
+              <strong id="pastHomeFouls" class="text-info fs-5">0</strong> - <strong id="pastAwayFouls" class="text-warning fs-5">0</strong>
+            </div>
+            <div class="col-4">
+              <small class="text-muted d-block fw-bold">TARJETAS AMARILLAS</small>
+              <strong id="pastHomeYellows" class="text-info fs-5">0</strong> - <strong id="pastAwayYellows" class="text-warning fs-5">0</strong>
+            </div>
+            <div class="col-4">
+              <small class="text-muted d-block fw-bold">CÓRNERS</small>
+              <strong id="pastHomeCorners" class="text-info fs-5">0</strong> - <strong id="pastAwayCorners" class="text-warning fs-5">0</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL DE REPRODUCTOR DE VIDEO LOCAL -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border-secondary">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-white font-heading"><i class="fa-solid fa-circle-play text-warning me-2"></i>Conferencia de Prensa</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0 bg-black text-center">
+          <video id="localVideoPlayer" class="w-100 rounded" controls style="max-height: 480px; outline: none;">
+            <source id="videoSource" src="" type="video/mp4">
+            Tu navegador no soporta la reproducción de video HTML5.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer Pro -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-5">
+          <a class="navbar-brand fs-3 d-block mb-2" href="#inicio">
+            <i class="fa-solid fa-bolt text-warning me-2"></i><span class="brand-glow">LIGA HONDUBET</span>
+          </a>
+          <p class="small text-white-50 pe-lg-5">Portal deportivo con la información oficial y en vivo del fútbol profesional hondureño.</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h6 class="text-white font-heading mb-3">Secciones Rápidas</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="#jornada10" class="text-decoration-none text-white-50">Próxima Jornada</a></li>
+            <li class="mb-2"><a href="#matches" class="text-decoration-none text-white-50">Jornada Anterior</a></li>
+            <li class="mb-2"><a href="#blog" class="text-decoration-none text-white-50">Noticias & Conferencias</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-4">
+          <h6 class="text-white font-heading mb-3">Redes Sociales</h6>
+          <div class="d-flex gap-3 fs-4">
+            <a href="#" class="text-info"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="text-info"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="text-info"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="text-info"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr style="border-color: var(--border-color);">
+      <div class="text-center small text-white-50 pt-2">
+        <p class="mb-0">&copy; 2026 Liga Hondubet de Honduras - Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- SCRIPTS DE CUENTA REGRESIVA Y MODALES DINÁMICOS -->
+  <script>
+    // Cuenta regresiva
+    const matchDate = new Date('October 15, 2026 19:30:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = matchDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+        document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+        document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Modal Dinámico de Noticias Completas
+    const newsModal = document.getElementById('newsModal');
+    newsModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      document.getElementById('modalNewsTitle').innerText = button.getAttribute('data-title');
+      document.getElementById('modalNewsTag').innerText = button.getAttribute('data-tag');
+      document.getElementById('modalNewsImg').src = button.getAttribute('data-img');
+      document.getElementById('modalNewsBody').innerText = button.getAttribute('data-body');
+    });
+
+    // Modal Dinámico de Previa (Próxima Jornada)
+    const matchModal = document.getElementById('matchModal');
+    matchModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const matchTitle = button.getAttribute('data-match');
+      const stadium = button.getAttribute('data-stadium');
+      const date = button.getAttribute('data-date');
+      
+      const hFormClasses = button.getAttribute('data-hform').split(',');
+      const hFormText = button.getAttribute('data-hformtext').split(',');
+      const aFormClasses = button.getAttribute('data-aform').split(',');
+      const aFormText = button.getAttribute('data-aformtext').split(',');
+      const h2hArray = button.getAttribute('data-h2h').split('|');
+
+      const teams = matchTitle.split(' vs ');
+      document.getElementById('modalMatchTitle').innerText = matchTitle;
+      document.getElementById('modalStadium').innerHTML = `<i class="fa-solid fa-location-dot me-1"></i> ${stadium}`;
+      document.getElementById('modalDate').innerHTML = `<i class="fa-regular fa-clock me-1"></i> ${date}`;
+      
+      document.getElementById('modalHomeTeamName').innerText = teams[0];
+      document.getElementById('modalAwayTeamName').innerText = teams[1];
+
+      let hFormHtml = '';
+      for(let i=0; i<hFormClasses.length; i++) {
+        let cls = hFormClasses[i].trim() === 'badge-v' ? 'badge-v' : (hFormClasses[i].trim() === 'badge-e' ? 'badge-e' : 'badge-d');
+        hFormHtml += `<span class="form-badge ${cls}">${hFormText[i].trim()}</span>`;
+      }
+      document.getElementById('modalHomeForm').innerHTML = hFormHtml;
+
+      let aFormHtml = '';
+      for(let i=0; i<aFormClasses.length; i++) {
+        let cls = aFormClasses[i].trim() === 'badge-v' ? 'badge-v' : (aFormClasses[i].trim() === 'badge-e' ? 'badge-e' : 'badge-d');
+        aFormHtml += `<span class="form-badge ${cls}">${aFormText[i].trim()}</span>`;
+      }
+      document.getElementById('modalAwayForm').innerHTML = aFormHtml;
+
+      let h2hHtml = '';
+      h2hArray.forEach(match => {
+        h2hHtml += `<li class="list-group-item bg-dark text-white border-secondary py-2"><i class="fa-solid fa-futbol text-warning me-2"></i>${match.trim()}</li>`;
+      });
+      document.getElementById('modalH2HList').innerHTML = h2hHtml;
+    });
+
+    // Modal Dinámico de Estadísticas del Partido Jugado (Jornada Anterior)
+    const pastMatchModal = document.getElementById('pastMatchModal');
+    pastMatchModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      
+      const matchTitle = button.getAttribute('data-match');
+      const stadium = button.getAttribute('data-stadium');
+      const goals = button.getAttribute('data-goals');
+      
+      const poss = button.getAttribute('data-possession').split(',');
+      const shots = button.getAttribute('data-shots').split(',');
+      const target = button.getAttribute('data-shotsontarget').split(',');
+      const fouls = button.getAttribute('data-fouls').split(',');
+      const yellows = button.getAttribute('data-yellows').split(',');
+      const corners = button.getAttribute('data-corners').split(',');
+
+      document.getElementById('pastModalTitle').innerText = matchTitle;
+      document.getElementById('pastModalStadium').innerHTML = `<i class="fa-solid fa-location-dot me-1"></i> ${stadium}`;
+      document.getElementById('pastModalGoals').innerText = goals;
+
+      // Posesión
+      document.getElementById('pastHomePoss').innerText = poss[0];
+      document.getElementById('pastAwayPoss').innerText = poss[1];
+      document.getElementById('pastHomePossBar').style.width = poss[0];
+      document.getElementById('pastAwayPossBar').style.width = poss[1];
+
+      // Tiros Totales
+      document.getElementById('pastHomeShots').innerText = shots[0];
+      document.getElementById('pastAwayShots').innerText = shots[1];
+      let totalShots = parseInt(shots[0]) + parseInt(shots[1]);
+      document.getElementById('pastHomeShotsBar').style.width = Math.round((parseInt(shots[0])/totalShots)*100) + '%';
+      document.getElementById('pastAwayShotsBar').style.width = Math.round((parseInt(shots[1])/totalShots)*100) + '%';
+
+      // Tiros al Arco
+      document.getElementById('pastHomeTarget').innerText = target[0];
+      document.getElementById('pastAwayTarget').innerText = target[1];
+      let totalTarget = parseInt(target[0]) + parseInt(target[1]);
+      document.getElementById('pastHomeTargetBar').style.width = Math.round((parseInt(target[0])/totalTarget)*100) + '%';
+      document.getElementById('pastAwayTargetBar').style.width = Math.round((parseInt(target[1])/totalTarget)*100) + '%';
+
+      // Faltas, Tarjetas y Córners
+      document.getElementById('pastHomeFouls').innerText = fouls[0];
+      document.getElementById('pastAwayFouls').innerText = fouls[1];
+      document.getElementById('pastHomeYellows').innerText = yellows[0];
+      document.getElementById('pastAwayYellows').innerText = yellows[1];
+      document.getElementById('pastHomeCorners').innerText = corners[0];
+      document.getElementById('pastAwayCorners').innerText = corners[1];
+    });
+
+    // Modal Dinámico para Videos Locales (MP4)
+    const videoModal = document.getElementById('videoModal');
+    videoModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const videoSrc = button.getAttribute('data-video');
+      const videoPlayer = document.getElementById('localVideoPlayer');
+      document.getElementById('videoSource').src = videoSrc;
+      videoPlayer.load();
+      videoPlayer.play();
+    });
+
+    // Detener la reproducción al cerrar el modal de video
+    videoModal.addEventListener('hide.bs.modal', function () {
+      const videoPlayer = document.getElementById('localVideoPlayer');
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+    });
+  </script>
+</body>
+
+</html>
